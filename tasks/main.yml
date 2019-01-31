@@ -1,9 +1,21 @@
 ---
-- name: Download gxadmin
-  get_url:
-    url: "https://raw.githubusercontent.com/usegalaxy-eu/gxadmin/{{ gxadmin_commit | default('master') }}/gxadmin"
-    dest: /usr/bin/gxadmin
-    mode: 0755
+
+- name: Clone gxadmin repository
+  git:
+    repo: "https://github.com/usegalaxy-eu/gxadmin.git/"
+    dest: "{{ gxadmin_dir }}"
+    version: "{{ gxadmin_commit | default(omit) }}"
+
+- name: Create bin directory
+  file:
+    path: "{{ gxadmin_bin_dir }}"
+    state: directory
+
+- name: Add gxadmin to bin dir
+  file:
+    src: "{{ gxadmin_dir }}/gxadmin"
+    dest: "{{ gxadmin_bin_dir }}/gxadmin"
+    state: link
 
 #- name: Add env vars
   ##become: true
