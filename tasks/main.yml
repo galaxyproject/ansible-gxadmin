@@ -16,6 +16,8 @@
     src: "{{ gxadmin_dir }}/gxadmin"
     dest: "{{ gxadmin_bin_dir }}/gxadmin"
     state: link
+  # will fail due to missing git, potentially.
+  when: not ansible_check_mode
 
 #- name: Add env vars
   ##become: true
