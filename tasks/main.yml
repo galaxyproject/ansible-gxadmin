@@ -5,6 +5,7 @@
     repo: "https://github.com/usegalaxy-eu/gxadmin.git/"
     dest: "{{ gxadmin_dir }}"
     version: "{{ gxadmin_commit | default(omit) }}"
+    force: "{{ gxadmin_force | default(false) }}"
 
 - name: Create bin directory
   file:
