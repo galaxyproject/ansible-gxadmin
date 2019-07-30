@@ -20,6 +20,9 @@
   # will fail due to missing git, potentially.
   when: not ansible_check_mode
 
+- include_tasks: set-vars.yml
+  when: postgresql_objects_privileges
+
 #- name: Add env vars
   ##become: true
   ##become_user: "{{ galaxy_user }}"

@@ -1,0 +1,18 @@
+---
+- set_fact:
+    postgres_user:
+      - name: telegraf
+        password: null
+
+- set_fact:
+    postgres_permissions:
+      - database: galaxy
+        roles: telegraf
+        privs: SELECT
+        objs: ALL_IN_SCHEMA
+
+- set_fact:
+    postgresql_objects_privileges: "{{ postgresql_objects_privileges | combine(postgres_permissions) }}"
+
+- set_fact:
+    postgresql_objects_users: "{{ postgresql_objects_users | combine(postgres_user) }}"
