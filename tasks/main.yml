@@ -6,6 +6,13 @@
     dest: "{{ gxadmin_dir }}"
     version: "{{ gxadmin_commit | default(omit) }}"
     force: "{{ gxadmin_force | default(false) }}"
+  register: __gxadmin_git_update_result
+
+- name: Compile gxadmin when there are updates
+  make:
+    chdir: "{{ gxadmin_dir }}"
+    target: gxadmin
+  when: __gxadmin_git_update_result is changed
 
 - name: Create bin directory
   file:
