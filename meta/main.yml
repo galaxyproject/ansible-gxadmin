@@ -4,6 +4,7 @@ galaxy_info:
   description: Install and configure gxadmin
   company: Galaxy Project Europe
   issue_tracker_url: https://github.com/usegalaxy-eu/gxadmin/issues
+  role_name: gxadmin
 
   # Some suggested licenses:
   # - BSD (default)
