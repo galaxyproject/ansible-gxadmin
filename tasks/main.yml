@@ -2,7 +2,7 @@
 
 - name: Clone gxadmin repository
   git:
-    repo: "https://github.com/usegalaxy-eu/gxadmin.git/"
+    repo: "{{ gxadmin_repo }}"
     dest: "{{ gxadmin_dir }}"
     version: "{{ gxadmin_commit | default(omit) }}"
     force: "{{ gxadmin_force | default(false) }}"
