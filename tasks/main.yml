@@ -27,6 +27,16 @@
   # will fail due to missing git, potentially.
   when: not ansible_check_mode
 
+- name: Create config directory
+  file:
+    path: "{{ gxadmin_config_dir }}"
+    state: directory
+
+- name: Insert configuration using a local file
+  blockinfile:
+    block: "{{ lookup('file', 'gxadmin_local') }}"
+    path: "{{ gxadmin_config_dir }}/gxadmin-local.sh"
+
 #- name: Add env vars
   ##become: true
   ##become_user: "{{ galaxy_user }}"
