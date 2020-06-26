@@ -34,7 +34,7 @@
     
 - name: Copy local file if the destination does not exist.
   copy:
-    src: gxadmin_local
+    content: '# Gxadmin local function'
     dest: "{{ gxadmin_config_dir }}/gxadmin-local.sh"
     force: no
 
