@@ -31,6 +31,12 @@
   file:
     path: "{{ gxadmin_config_dir }}"
     state: directory
+    
+- name: Copy local file if the destination does not exist.
+  copy:
+    src: gxadmin_local
+    dest: "{{ gxadmin_config_dir }}/gxadmin-local.sh"
+    force: no
 
 - name: Insert configuration using a local file
   blockinfile:
