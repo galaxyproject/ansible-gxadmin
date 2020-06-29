@@ -1,10 +1,5 @@
 ---
 
-- name: add Bats
-  package:
-    name: bats
-    state: present
-
 - name: Clone gxadmin repository
   git:
     repo: "{{ gxadmin_repo }}"
