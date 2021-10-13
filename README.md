@@ -15,4 +15,4 @@ GPLv3
 Author Information
 ------------------
 
-[Helena Rasche](https://github.com/erasche)
+[Helena Rasche](https://github.com/hexylena)
