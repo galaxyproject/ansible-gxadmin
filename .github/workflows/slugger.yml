@@ -39,8 +39,9 @@ jobs:
       - name: Check for changes
         run: |
           LATEST_TAG=$(git describe --tags --abbrev=0)
+          echo "The last released tag was ${LATEST_TAG}"
           CHANGES=$(git diff ${LATEST_TAG} --name-only | wc -l)
-          echo "Found ${CHANGES} files"
+          echo "Found ${CHANGES} changed files"
           git diff ${LATEST_TAG} --name-only
           echo "changed_files=${CHANGES}" >> $GITHUB_ENV
 
