@@ -7,7 +7,7 @@
     version: "{{ gxadmin_commit | default(omit) }}"
     force: "{{ gxadmin_force | default(false) }}"
   register: __gxadmin_git_update_result
-  
+
 - name: Check if executable exists
   stat:
     path: "{{ gxadmin_dir }}/gxadmin"
@@ -17,7 +17,8 @@
   make:
     chdir: "{{ gxadmin_dir }}"
     target: gxadmin
-  when: __gxadmin_git_update_result is changed or not __gxadmin_check.stat.exists
+  when: |
+    __gxadmin_git_update_result is changed or  not __gxadmin_check.stat.exists
 
 - name: Create bin directory
   file:
@@ -36,7 +37,7 @@
   file:
     path: "{{ gxadmin_config_dir }}"
     state: directory
-    
+
 - name: Copy local file if the destination does not exist.
   copy:
     content: '# Gxadmin local function'
