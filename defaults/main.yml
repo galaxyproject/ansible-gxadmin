@@ -4,3 +4,7 @@ gxadmin_bin_dir: "/usr/local/bin"
 gxadmin_config_dir: "~/.config"
 gxadmin_create_bin_dir: true
 gxadmin_repo: "https://github.com/galaxyproject/gxadmin.git"
+
+gxadmin_manage_dependencies: true  # install packages the role needs to run
+gxadmin_manage_apt_cache: true  # update APT cache if outdated
+gxadmin_apt_cache_valid_time: 604800  # time the APT cache is considered valid
