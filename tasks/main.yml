@@ -2,11 +2,10 @@
 - name: Update apt cache (Debian derivatives)
   become: true
   ansible.builtin.apt:
-    cache_valid_time: "{{ gxadmin_apt_cache_valid_time }}"
+    cache_valid_time: 604800
   when: >-
     ansible_os_family == "Debian"
     and gxadmin_manage_dependencies
-    and gxadmin_manage_apt_cache
 
 - name: Ensure role and gxadmin dependencies are installed
   become: true
