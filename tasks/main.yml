@@ -13,22 +13,9 @@
     name:
       - git
       - make
+      - "postgresql{{ '-client' if ansible_os_family == 'Debian' }}"
     state: present
   when: gxadmin_manage_dependencies
-
-- name: Ensure role and gxadmin dependencies are installed (EL)
-  become: true
-  ansible.builtin.package:
-    name: postgresql
-    state: present
-  when: ansible_os_family == "RedHat" and gxadmin_manage_dependencies
-
-- name: Ensure role and gxadmin dependencies are installed (Debian derivatives)
-  become: true
-  ansible.builtin.package:
-    name: postgresql-client
-    state: present
-  when: ansible_os_family == "Debian" and gxadmin_manage_dependencies
 
 - name: Clone gxadmin repository
   ansible.builtin.git:
